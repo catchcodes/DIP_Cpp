@@ -73,7 +73,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>C:\Users\19941\AppData\Local\Programs\Python\Python310\include;E:\OpenCV\opencv\build\include\opencv2;E:\OpenCV\opencv\build\include;D:\VSFIles\DIP_Project\Head_Files;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\OpenCV\opencv\build\x64\vc16\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\19941\AppData\Local\Programs\Python\Python310\libs;E:\OpenCV\opencv\build\x64\vc16\lib;$(LibraryPath)</LibraryPath>
     <ReferencePath>$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -112,6 +112,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>D:\VSFIles\DIP_Project\Head_Files;C:\Users\19941\AppData\Local\Programs\Python\Python310\Lib\site-packages\numpy\core\include;C:\Users\19941\AppData\Local\Programs\Python\Python310\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
