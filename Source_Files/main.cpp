@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 ﻿#include <iostream>
 #include <string>
-=======
-﻿#include<iostream>
-#include<string>
->>>>>>> bed4af2c04c1b90fca46b527e6335fe9bdebbe83
 #include "opencv2/imgproc/types_c.h"
 #include "function.h"
 
