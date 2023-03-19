@@ -213,26 +213,67 @@ Codes of Digital-Image-Processing homework
   </code></pre>
   </details>
 
+* 人脸检测（Python）
+  <details>
+  <summary><font size="3" color=#F08080>代码展开</font></summary>
+  <pre><code class="language-python">
+  # HOG人脸检测器寻找人脸
+  def find_face(filename):
+    face_detector = dlib.get_frontal_face_detector()  # 创建HOG人脸检测器
+    image = cv2.imread(filename)
+    detected_faces = face_detector(image, 1)
+	# 存储人脸矩形框的坐标信息
+    location = []
+    for i, face_rect in enumerate(detected_faces):
+        location.append(face_rect.left())
+        location.append(face_rect.top())
+        location.append(face_rect.right())
+        location.append(face_rect.bottom())
+    return location
+  </code></pre>
+  </details>
+
+* 人脸81个特征点位置（Python）
+  <details>
+  <summary><font size="3" color=#FF8C00>代码展开</font></summary>
+  <pre><code class="language-python">
+  def find_face_landmarks(filename):
+    # 人脸81个关键点模型位置 
+    predictor_model = r"E:\Face_Landmarks\shape_predictor_81_face_landmarks.dat"
+    face_detector = dlib.get_frontal_face_detector()  # 创建HOG人脸检测器
+    face_pose_predictor = dlib.shape_predictor(predictor_model)  # 创建人脸特征点检测器
+    image = cv2.imread(filename)
+    detected_faces = face_detector(image, 1)
+    mark = []
+    for i, face_rect in enumerate(detected_faces):
+        pose_landmarks = face_pose_predictor(image, face_rect)  # 获取面部的姿势
+        for j in range(81):
+		    # 以tuple形式存放到mark列表中，方便C++调用
+            mark.append((pose_landmarks.part(j).x, pose_landmarks.part(j).y))            
+    return mark
+  </code></pre>
+  </details>
+
 To be continued……
 
 ```
-                              _ooOoo_
-                             o8888888o
-                             88" . "88
-                             (| -_- |)
-                             O\  =  /O
-                          ____/`---'\____
-                        .'  \\|     |//  `.
-                       /  \\|||  :  |||//  \
-                      /  _||||| -:- |||||-  \
-                      |   | \\\  -  /// |   |
-                      | \_|  ''\---/''  |   |
-                      \  .-\__  `-`  ___/-. /
-                    ___`. .'  /--.--\  `. . __
-                 ."" '<  `.___\_<|>_/___.'  >'"".
-                | | :  `- \`.;`\ _ /`;.`/ - ` : | |
-                \  \ `-.   \_ __\ /__ _/   .-` /  /
-           ======`-.____`-.___\_____/___.-`____.-'======
-                              `=---='
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+								  _ooOoo_
+								 o8888888o
+								 88" . "88
+								 (| -_- |)
+								 O\  =  /O
+							  ____/`---'\____
+							.'  \\|     |//  `.
+						   /  \\|||  :  |||//  \
+						  /  _||||| -:- |||||-  \
+						  |   | \\\  -  /// |   |
+						  | \_|  ''\---/''  |   |
+						  \  .-\__  `-`  ___/-. /
+						___`. .'  /--.--\  `. . __
+					 ."" '<  `.___\_<|>_/___.'  >'"".
+					| | :  `- \`.;`\ _ /`;.`/ - ` : | |
+					\  \ `-.   \_ __\ /__ _/   .-` /  /
+			   ======`-.____`-.___\_____/___.-`____.-'======
+								  `=---='
+			   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
