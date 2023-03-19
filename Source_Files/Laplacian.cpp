@@ -20,11 +20,13 @@ void Laplacian(Mat& gray, Mat& result, int padding)
     }
     for (int i = 0; i < gray.rows; i++)
     {
+        uchar* grayptr = gray.ptr<uchar>(i);
+        uchar* resultptr = result.ptr<uchar>(i);
         for (int j = 0; j < gray.cols; j++)
         {
             // cv::saturate_cast<uchar>()保证范围为0~255
             // 直接访问
-            result.at<uchar>(i, j) = cv::saturate_cast<uchar>(gray.at<uchar>(i, j) + 8 * gray_buf.at<uchar>(i + 1, j + 1) - gray_buf.at<uchar>(i, j) - gray_buf.at<uchar>(i, j + 1) - gray_buf.at<uchar>(i, j + 2) \
+            resultptr[j] = cv::saturate_cast<uchar>(grayptr[j] + 8 * gray_buf.at<uchar>(i + 1, j + 1) - gray_buf.at<uchar>(i, j) - gray_buf.at<uchar>(i, j + 1) - gray_buf.at<uchar>(i, j + 2) \
                 - gray_buf.at<uchar>(i + 1, j) - gray_buf.at<uchar>(i + 1, j + 2) - gray_buf.at<uchar>(i + 2, j) - gray_buf.at<uchar>(i + 2, j + 1) - gray_buf.at<uchar>(i + 2, j + 2));
         }
     }

@@ -11,8 +11,8 @@ void HistEqual(Mat& gray, Mat& result);
 void Laplacian(Mat& gray, Mat& result, int padding=0);
 // 频移
 void fftshift(Mat plane0, Mat plane1);
-// 理想低通滤波器
-void ILPF(Mat& gray, Mat& result, int fc);
+// 理想低/高通滤波器
+void ILPF(Mat& gray, Mat& result, int fc, bool highpass=false);
 // n阶巴特沃斯低通滤波器
 void BLPF(Mat& gray, Mat& result, int fc, int level=2);
 // 高斯低通滤波器

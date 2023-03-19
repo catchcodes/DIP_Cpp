@@ -10,9 +10,10 @@ void HistEqual(Mat& gray, Mat& result)
     map<int, int>pixelCounter;
     for (int i = 0; i < gray.rows; i++)
     {
+        uchar* grayptr = gray.ptr<uchar>(i);
         for (int j = 0; j < gray.cols; j++)
         {
-            int value = gray.at<uchar>(i, j);
+            int value = grayptr[j];
             pixelCounter[value]++;
         }
     }
@@ -29,12 +30,14 @@ void HistEqual(Mat& gray, Mat& result)
     //根据累计频率进行转换
     for (int i = 0; i < gray.rows; i++)
     {
+        uchar* grayptr1 = gray.ptr<uchar>(i);
+        uchar* resultptr = result.ptr<uchar>(i);
         for (int j = 0; j < gray.cols; j++)
         {
-            int value = gray.at<uchar>(i, j);
+            int value = grayptr1[j];
             double fre = pixel_fre[value];
             // 原始灰度值乘以累计频率
-            result.at<uchar>(i, j) = fre * value;
+            resultptr[j] = fre * value;
         }
     }
 }

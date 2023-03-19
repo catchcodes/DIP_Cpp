@@ -77,7 +77,7 @@ int main()
         //Laplacian(imageRGB[i], imageRGB[i], 0);
         //ILPF(imageRGB[i], imageRGB[i], 30);
         //BLPF(imageRGB[i], imageRGB[i], 30);
-        GLPF(imageRGB[i], imageRGB[i], 30);
+        //GLPF(imageRGB[i], imageRGB[i], 30);
 
     // 合并通道
     merge(imageRGB, 3, scrImage);

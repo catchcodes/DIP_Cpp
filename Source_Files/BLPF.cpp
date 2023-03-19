@@ -21,11 +21,11 @@ void BLPF(Mat& gray, Mat& result, int fc, int level)
 	Mat filter = Mat::zeros(padded.size(), CV_32FC1);
 	for (int i = 0; i < row; i++)
 	{
-		//float* data = filter.ptr<float>(i);
+		float* data = filter.ptr<float>(i);
 		for (int j = 0; j < col; j++)
 		{
 			float d = sqrt(pow((i - row / 2.0), 2) + pow((j - col / 2.0), 2));
-			filter.at<float>(i, j) = 1 / (1 + pow(float(d / fc), 2 * level));
+			data[j] = 1 / (1 + pow(float(d / fc), 2 * level));
 		}
 	}
 	// 实部和虚部

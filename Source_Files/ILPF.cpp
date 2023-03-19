@@ -5,8 +5,8 @@ using namespace cv;
 using std::map;
 
 
-// 理想低通滤波器
-void ILPF(Mat& gray, Mat& result, int fc)
+// 理想低/高通滤波器
+void ILPF(Mat& gray, Mat& result, int fc, bool highpass)
 {
 	// 扩展图像矩阵，为2，3，5的倍数时运算速度快
 	int m = cv:: getOptimalDFTSize(gray.rows);
@@ -22,12 +22,17 @@ void ILPF(Mat& gray, Mat& result, int fc)
 	Mat filter = Mat::zeros(padded.size(), CV_32FC1);
 	for (int i = 0; i < row; i++)
 	{
+		float* data = filter.ptr<float>(i);
 		for (int j = 0; j < col; j++)
 		{
 			double d = sqrt(pow((i - row / 2.0), 2) + pow((j - col / 2.0), 2));
-			if (d <= fc)
+			if (highpass)
 			{
-				filter.at<float>(i, j) = 1;
+				data[j] = 1 ? d > fc : 0;
+			}
+			else
+			{
+				data[j] = 1 ? d <= fc : 0;
 			}
 		}
 	}
