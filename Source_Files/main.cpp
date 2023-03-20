@@ -2,6 +2,8 @@
 #include <string>
 #include "opencv2/imgproc/types_c.h"
 #include "function.h"
+#include <QtWidgets/qapplication.h>
+#include <QtWidgets/qlabel.h>
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
 
@@ -9,7 +11,7 @@ using namespace std;
 using namespace cv;
 
 
-int main()
+int main(int argc, char* argv[])
 {
     vector<int> location_x;
     vector<int> location_y;
@@ -61,33 +63,36 @@ int main()
         }
         Py_Finalize();//调用Py_Finalize，这个根Py_Initialize相对应的。
     }
+    QApplication a(argc, argv);
+    QLabel label(QLabel::tr("Hello Qt"));
+    label.show();
 
-    Mat scrImage = imread( ".\\Resource_Files\\1.jpg");
-    // 通道数，灰度图或彩色图
-    int channels = scrImage.channels();
-    // 克隆原始图像用于显示
-    Mat image = scrImage.clone();
-    Mat imageRGB[3];
-    // 分离scrImage的三个Channels到imageRGB
-    split(scrImage, imageRGB);
+    //Mat scrImage = imread( ".\\Resource_Files\\1.jpg");
+    //// 通道数，灰度图或彩色图
+    //int channels = scrImage.channels();
+    //// 克隆原始图像用于显示
+    //Mat image = scrImage.clone();
+    //Mat imageRGB[3];
+    //// 分离scrImage的三个Channels到imageRGB
+    //split(scrImage, imageRGB);
 
-    // 分别进行直方图均衡化/拉普拉斯锐化
-    for (int i = 0; i < channels; i++)
-        //HistEqual(imageRGB[i], imageRGB[i]);
-        //Laplacian(imageRGB[i], imageRGB[i], 0);
-        //ILPF(imageRGB[i], imageRGB[i], 30);
-        //BLPF(imageRGB[i], imageRGB[i], 30);
-        //GLPF(imageRGB[i], imageRGB[i], 30);
+    //// 分别进行直方图均衡化/拉普拉斯锐化
+    //for (int i = 0; i < channels; i++)
+    //    //HistEqual(imageRGB[i], imageRGB[i]);
+    //    //Laplacian(imageRGB[i], imageRGB[i], 0);
+    //    ILPF(imageRGB[i], imageRGB[i], 30);
+    //    //BLPF(imageRGB[i], imageRGB[i], 30);
+    //    //GLPF(imageRGB[i], imageRGB[i], 30);
 
-    // 合并通道
-    merge(imageRGB, 3, scrImage);
+    //// 合并通道
+    //merge(imageRGB, 3, scrImage);
 
-    namedWindow("原始", 0); resizeWindow("原始", 500, 700); moveWindow("原始", 0, 0); imshow("原始", image);
-    //namedWindow("均衡后", 0); resizeWindow("均衡后", 500, 700); moveWindow("均衡后", 500, 0); imshow("均衡后", scrImage);
-    //namedWindow("拉普拉斯", 0); resizeWindow("拉普拉斯", 500, 700); moveWindow("拉普拉斯", 500, 0); imshow("拉普拉斯", scrImage);
-    namedWindow("低通", 0); resizeWindow("低通", 500, 700); moveWindow("低通", 500, 0); imshow("低通", scrImage);
+    //namedWindow("原始", 0); resizeWindow("原始", 500, 700); moveWindow("原始", 0, 0); imshow("原始", image);
+    ////namedWindow("均衡后", 0); resizeWindow("均衡后", 500, 700); moveWindow("均衡后", 500, 0); imshow("均衡后", scrImage);
+    ////namedWindow("拉普拉斯", 0); resizeWindow("拉普拉斯", 500, 700); moveWindow("拉普拉斯", 500, 0); imshow("拉普拉斯", scrImage);
+    //namedWindow("低通", 0); resizeWindow("低通", 500, 700); moveWindow("低通", 500, 0); imshow("低通", scrImage);
 
-    waitKey(0);
-    //system("pause");
-    return 0;
+    //waitKey(0);
+    ////system("pause");
+    return a.exec();
 }

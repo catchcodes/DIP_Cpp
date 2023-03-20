@@ -40,4 +40,13 @@
   <ItemGroup>
     <None Include="Head_Files\Widget.ui" />
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="E:\Qt\5.14.2\msvc2017_64\lib\Qt5Widgetsd.lib" />
+    <Library Include="E:\Qt\5.14.2\msvc2017_64\lib\qtmaind.lib" />
+    <Library Include="E:\Qt\5.14.2\msvc2017_64\lib\libEGLd.lib" />
+    <Library Include="E:\Qt\5.14.2\msvc2017_64\lib\Qt5Guid.lib" />
+    <Library Include="E:\Qt\5.14.2\msvc2017_64\lib\Qt5UiToolsd.lib" />
+    <Library Include="E:\Qt\5.14.2\msvc2017_64\lib\Qt5Widgets.lib" />
+    <Library Include="E:\Qt\5.14.2\msvc2017_64\lib\Qt5Gui.lib" />
+  </ItemGroup>
 </Project>

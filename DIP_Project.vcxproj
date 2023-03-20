@@ -72,8 +72,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\19941\AppData\Local\Programs\Python\Python310\include;E:\OpenCV\opencv\build\include\opencv2;E:\OpenCV\opencv\build\include;D:\VSFIles\DIP_Project\Head_Files;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\19941\AppData\Local\Programs\Python\Python310\libs;E:\OpenCV\opencv\build\x64\vc16\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\Qt\5.14.2\msvc2017_64\include;C:\Users\19941\AppData\Local\Programs\Python\Python310\include;E:\OpenCV\opencv\build\include\opencv2;E:\OpenCV\opencv\build\include;D:\VSFIles\DIP_Project\Head_Files;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\Qt\5.14.2\msvc2017_64\lib;C:\Users\19941\AppData\Local\Programs\Python\Python310\libs;E:\OpenCV\opencv\build\x64\vc16\lib;$(LibraryPath)</LibraryPath>
     <ReferencePath>$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -113,12 +113,13 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>D:\VSFIles\DIP_Project\Head_Files;C:\Users\19941\AppData\Local\Programs\Python\Python310\Lib\site-packages\numpy\core\include;C:\Users\19941\AppData\Local\Programs\Python\Python310\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>D:\VSFIles\DIP_Project\Head_Files;C:\Users\19941\AppData\Local\Programs\Python\Python310\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>"C:\Users\19941\AppData\Local\Programs\Python\Python310\libs\_tkinter.lib";"C:\Users\19941\AppData\Local\Programs\Python\Python310\libs\python3.lib";"C:\Users\19941\AppData\Local\Programs\Python\Python310\libs\python310.lib";"C:\Users\19941\AppData\Local\Programs\Python\Python310\libs\python310_d.lib";opencv_world470d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>"C:\Users\19941\AppData\Local\Programs\Python\Python310\libs\_tkinter.lib";"C:\Users\19941\AppData\Local\Programs\Python\Python310\libs\python3.lib";"C:\Users\19941\AppData\Local\Programs\Python\Python310\libs\python310.lib";"C:\Users\19941\AppData\Local\Programs\Python\Python310\libs\python310_d.lib";opencv_world470d.lib;"E:\Qt\5.14.2\msvc2017_64\lib\Qt5Cored.lib";"E:\Qt\5.14.2\msvc2017_64\lib\Qt5Guid.lib";"E:\Qt\5.14.2\msvc2017_64\lib\Qt5Multimediad.lib";"E:\Qt\5.14.2\msvc2017_64\lib\Qt5MultimediaWidgetsd.lib";"E:\Qt\5.14.2\msvc2017_64\lib\Qt5Widgetsd.lib";"E:\Qt\5.14.2\msvc2017_64\lib\qtmaind.lib";%(AdditionalDependencies)</AdditionalDependencies>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -149,6 +150,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Head_Files\Widget.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="E:\Qt\5.14.2\msvc2017_64\lib\libEGLd.lib" />
+    <Library Include="E:\Qt\5.14.2\msvc2017_64\lib\Qt5Gui.lib" />
+    <Library Include="E:\Qt\5.14.2\msvc2017_64\lib\Qt5Guid.lib" />
+    <Library Include="E:\Qt\5.14.2\msvc2017_64\lib\Qt5UiToolsd.lib" />
+    <Library Include="E:\Qt\5.14.2\msvc2017_64\lib\Qt5Widgets.lib" />
+    <Library Include="E:\Qt\5.14.2\msvc2017_64\lib\Qt5Widgetsd.lib" />
+    <Library Include="E:\Qt\5.14.2\msvc2017_64\lib\qtmaind.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
